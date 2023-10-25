@@ -1,5 +1,6 @@
 def main():
-    fake: Faker = Faker()
+    fake: Faker = Faker() 
+    
     product_names = ["T-shirt", "Jeans", "Sneakers", "Jacket", "Hat", "Socks", "Backpack", "Sweater", "Dress", "Skirt"]
     for _ in range(5):
         products =Product.objects.create(
