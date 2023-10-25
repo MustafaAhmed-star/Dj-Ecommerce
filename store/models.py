@@ -36,7 +36,7 @@ class Order(models.Model):
 
 
     def __str__(self) -> str:
-        return f'Order for{self.customer}'
+        return f'Order for {self.customer}'
     
 
 class OrderItem(models.Model):
@@ -45,8 +45,8 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=1,blank= True,null= True)
     date_added = models.DateField(auto_now_add=True)
     def __str__(self):
-        return f'{self.product.title} ({self.quantity})'
-
+        return f'{self.product.name} ({self.quantity})'
+ 
 
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank= True)
