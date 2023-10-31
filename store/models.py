@@ -38,6 +38,17 @@ class Order(models.Model):
     def __str__(self) -> str:
         return f'Order for {self.customer}'
     
+    #this property to ensue if there is any item in the order digital or not
+    @property
+    def  shipping(self):
+        shipping = False
+        orderitems = self.orderitem_set.all() 
+        for i in orderitems:
+            if i.product.shipping== True:
+                shipping = True
+
+        return shipping
+    
     @property
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
