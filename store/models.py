@@ -40,11 +40,11 @@ class Order(models.Model):
     
     #this property to ensue if there is any item in the order digital or not
     @property
-    def  shipping(self):
+    def shipping(self):
         shipping = False
         orderitems = self.orderitem_set.all() 
         for i in orderitems:
-            if i.product.shipping== True:
+            if i.product.digital == False:
                 shipping = True
 
         return shipping
