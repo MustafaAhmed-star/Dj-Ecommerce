@@ -43,6 +43,8 @@
 			<br>
 			<div class="box-element hidden" id="payment-info">
 				<small>Paypal Options</small>
+				<button id = "make-payment">Make payment</button>
+				
 				 
 			</div>
 			
@@ -76,6 +78,16 @@
 		if (shipping == 'False'){
 			document.getElementById('shipping-info').innerHTML ='';
 	
+		}
+		if(user!= 'AnonymousUser'){
+			document.getElementById('user-info').innerHTML ='';
+		}
+		if(shipping == 'False' && user!= 'AnonymousUser'){
+		//hide entire form if user is logged in and shipping is false
+		document.getElementById('form-wrapper').classList.add('hidden');
+		// show  payment form if user is logged in and items dont reqiore shipping (shipping is false )
+		document.getElementById('payment-info').classList.remove('hidden');
+		
 		}	
 		var form = document.getElementById('form')
 		form.addEventListener('submit', function(e){
@@ -84,5 +96,14 @@
 	    	document.getElementById('form-button').classList.add("hidden");
 	    	document.getElementById('payment-info').classList.remove("hidden");
 	    })
+		document.getElementById('make-payment').addEventListener('click', function(e){
+			submitFormData()
+		
+		})
+
+		function submitFormData(){
+			console.log('Patment button clicked');
+		}
+	
 	</script>
 {% endblock content %}
