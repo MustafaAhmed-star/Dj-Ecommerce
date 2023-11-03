@@ -1,7 +1,7 @@
 import json
 import datetime
 from django.shortcuts import render
-from .models import Product ,Customer,Order ,OrderItem
+from .models import Product ,Customer,Order ,OrderItem, ShippingAddress
 from django.http import JsonResponse
 
 # Create your views here.
@@ -73,5 +73,22 @@ def updateItem(request):
 
 
 def processOrder(request):
-    transaction_id = datetime.datetime.now().timestamp()
-    return JsonResponse('Payment completed' , safe=False)
+	transaction_id = datetime.datetime.now().timestamp()
+	data = json.loads(request.body)
+
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order, created = Order.objects.get_or_create(customer=customer, complete=False)
+	else:
+		print('Customer not authenticated')
+
+	total = float(data['form']['total'])
+	order.transaction_id = transaction_id
+    #to secute data from change in fronend 
+	if total == order.get_cart_total:
+		order.complete = True
+	order.save()
+
+	 
+
+	return JsonResponse('Payment submitted..', safe=False)
