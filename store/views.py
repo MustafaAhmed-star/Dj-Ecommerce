@@ -69,4 +69,4 @@ def updateItem(request):
     
     return JsonResponse('Item was added successfully' , safe=False)
 def processOrder(request):
-    return JsonResponse('Item was added successfully' , safe=False)
+    return JsonResponse('Payment completed' , safe=False)
