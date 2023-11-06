@@ -29,7 +29,13 @@
       }
       return cookieValue;
   }
-  var csrftoken = getToken('csrftoken')
+
+ 
+console.log("cart:",cart);
+var cart = JSON.parse(getCookie('cart'))
+
+
+
 
   </script>
 
@@ -54,7 +60,7 @@
                <a href="{% url 'cart' %}">
                   <img  id="cart-icon" src="{% static 'images/cart.jpg' %}"  >
               </a>
-              <p id="cart-total">{{cartItems}}</p>
+              <p id="cart-total">{{ cartItems}}</p>
       
           </div>
         </div>
