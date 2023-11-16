@@ -81,9 +81,11 @@ def processOrder(request):
     total = float(data['form']['total'])
     order.transaction_id = transaction_id
     # to secure data from change in frontend
-    if total == order.get_cart_total:
+    if total == float(order.get_cart_total):
         order.complete = True
     order.save()
+    print('total',total)
+    print('Ordertotal',order.get_cart_total)
 
     if order.shipping == True:
         ShippingAddress.objects.create(
