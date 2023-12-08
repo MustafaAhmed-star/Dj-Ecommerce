@@ -79,9 +79,14 @@
 	<script>
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
+
             style: {
-                layout: 'horizontal'
+                color:  'blue',
+                shape:  'pill',
+                label:  'pay',
+                height: 40
             },
+            
 
             // Call your server to set up the transaction
             createOrder: function(data, actions) {
