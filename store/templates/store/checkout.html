@@ -75,7 +75,7 @@
 		</div>
 		</div>
 		
-	<script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+	<script src="https://www.paypal.com/sdk/js?client-id=ARdi7GOJ-M-cUiRsOChj72jZPiWvQlS86PjKvyzPN0ZJdrDdnfwIa6dMQ9AaxsQaZ6zm_6Lwx_zAabv2&currency=USD"></script>
 	<script>
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
@@ -87,7 +87,6 @@
                 height: 40
             },
             
-
             // Call your server to set up the transaction
             createOrder: function(data, actions) {
                 return fetch('/demo/checkout/api/paypal/order/create/', {
@@ -139,6 +138,7 @@
                     // Or go to another URL:  actions.redirect('thank_you.html');
                 });
             }
+
         }).render('#paypal-button-container');
     </script>
 	<script type="text/javascript">
